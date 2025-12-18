@@ -1,0 +1,116 @@
+{
+  "model_type": "GradientBoostingRegressor",
+  "features": [
+    "carat",
+    "cut_encoded",
+    "color_encoded",
+    "clarity_encoded"
+  ],
+  "feature_labels": {
+    "carat": "Carat (Weight)",
+    "cut_encoded": "Cut Quality",
+    "color_encoded": "Color Grade",
+    "clarity_encoded": "Clarity Grade"
+  },
+  "encoding_maps": {
+    "cut": {
+      "Fair": 0,
+      "Good": 1,
+      "Very Good": 2,
+      "Premium": 3,
+      "Ideal": 4
+    },
+    "color": {
+      "J": 0,
+      "I": 1,
+      "H": 2,
+      "G": 3,
+      "F": 4,
+      "E": 5,
+      "D": 6
+    },
+    "clarity": {
+      "I1": 0,
+      "SI2": 1,
+      "SI1": 2,
+      "VS2": 3,
+      "VS1": 4,
+      "VVS2": 5,
+      "VVS1": 6,
+      "IF": 7
+    }
+  },
+  "reverse_maps": {
+    "cut": {
+      "0": "Fair",
+      "1": "Good",
+      "2": "Very Good",
+      "3": "Premium",
+      "4": "Ideal"
+    },
+    "color": {
+      "0": "J",
+      "1": "I",
+      "2": "H",
+      "3": "G",
+      "4": "F",
+      "5": "E",
+      "6": "D"
+    },
+    "clarity": {
+      "0": "I1",
+      "1": "SI2",
+      "2": "SI1",
+      "3": "VS2",
+      "4": "VS1",
+      "5": "VVS2",
+      "6": "VVS1",
+      "7": "IF"
+    }
+  },
+  "metrics": {
+    "train_r2": 0.9903,
+    "test_r2": 0.9903,
+    "test_rmse": 0.1001,
+    "cv_mean": 0.9898,
+    "cv_std": 0.0002
+  },
+  "sanity_checks": {
+    "vif_scores": {
+      "carat": 1.28,
+      "cut_encoded": 1.04,
+      "color_encoded": 1.12,
+      "clarity_encoded": 1.19
+    },
+    "vif_pass": true,
+    "overfit_gap": 0.0,
+    "overfit_pass": true,
+    "cv_stable": true,
+    "residual_mean": -0.000787
+  },
+  "prediction_intervals": {
+    "residual_std": 0.1001,
+    "lower_bound_offset": -0.1624,
+    "upper_bound_offset": 0.161
+  },
+  "feature_importance": {
+    "carat": 0.95,
+    "cut_encoded": 0.0027,
+    "color_encoded": 0.0147,
+    "clarity_encoded": 0.0326
+  },
+  "data_stats": {
+    "carat_min": 0.2,
+    "carat_max": 5.01,
+    "price_min": 326,
+    "price_max": 18823,
+    "n_samples": 53920
+  },
+  "known_limitations": [
+    "Model trained on diamonds 0.2-5.01 carats; extrapolation outside this range may be unreliable",
+    "Price predictions are log-transformed; extreme values may have larger absolute errors",
+    "Outliers in original data were not removed; some edge cases may have higher prediction error",
+    "Model assumes standard diamond market conditions; may not reflect current market fluctuations",
+    "Confidence bands are empirical (based on residual distribution), not theoretical"
+  ]
+}
